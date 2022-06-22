@@ -15,7 +15,7 @@ class CustomerFrontStageApplicationTests {
 
     @Test
     void contextLoads() {
-        System.out.println(customerService.sel(1).toString());
+
     }
 
 }
