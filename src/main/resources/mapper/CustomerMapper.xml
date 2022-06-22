@@ -11,7 +11,7 @@
     </resultMap>
 
     <select id="sel" resultType="com.youko.customerfrontstage.bean.Customer">
-        select * from sassmall.customer where id = #{id}
+        select * from saasmall.customer where id = #{id}
     </select>
 
 </mapper>
