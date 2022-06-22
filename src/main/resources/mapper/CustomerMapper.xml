@@ -10,8 +10,12 @@
         <result column="mobile" jdbcType="VARCHAR" property="mobile" />
     </resultMap>
 
-    <select id="sel" resultType="com.youko.customerfrontstage.bean.Customer">
-        select * from saasmall.customer where id = #{id}
+    <select id="selectOneCustomer" resultType="com.youko.customerfrontstage.bean.Customer">
+        select * from saasmall.customer where name=#{name} and password=#{password}
     </select>
+
+    <insert id="insertCustomer" parameterType="com.youko.customerfrontstage.bean.Customer">
+        insert into saasmall.customer values (#{id},#{name},#{password},#{mobile})
+    </insert>
 
 </mapper>
