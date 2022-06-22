@@ -15,4 +15,8 @@ mybatis:
   type-aliases-package: com.youko.customerfrontstage.bean
   configuration:
     map-underscore-to-camel-case: true
-
+jasypt:
+  encryptor:
+    password: youko&gcf
+    iv-generator-classname: org.jasypt.iv.NoIvGenerator
+    algorithm: PBEWithMD5AndDES
