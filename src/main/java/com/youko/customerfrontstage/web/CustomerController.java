@@ -1,19 +1,27 @@
 package com.youko.customerfrontstage.web;
 
 import com.youko.customerfrontstage.bean.Customer;
-import com.youko.customerfrontstage.dto.CustomerLoginDto;
-import com.youko.customerfrontstage.dto.CustomerRegisterDto;
+import com.youko.customerfrontstage.dto.customer.CustomerLoginDto;
+import com.youko.customerfrontstage.dto.customer.CustomerRegisterDto;
 import com.youko.customerfrontstage.service.CustomerService;
+import org.apache.ibatis.annotations.Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Map;
 
 @RestController
 public class CustomerController {
     @Autowired
     private CustomerService customerService;
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
-    @PostMapping("/save")
+
+    /**注册接口*/
+    @PostMapping("/register")
     public String saveCustomer(@RequestBody CustomerRegisterDto customerRegisterDto){
         if(customerRegisterDto==null){
             return "操作失败";
@@ -23,8 +31,9 @@ public class CustomerController {
         }
         Customer customer=new Customer();
         customer.setName(customerRegisterDto.getName());
-        customer.setPassword(customerRegisterDto.getPassword());
+        customer.setPassword(passwordEncoder.encode(customerRegisterDto.getPassword()));
         customer.setMobile(customerRegisterDto.getMobile());
+        customer.setRole("user");
         if (!(customerService.selectCustomer(customer)==null)){
             return "此账号密码重复";
         }
@@ -32,6 +41,8 @@ public class CustomerController {
         return "操作成功";
     }
 
+
+    /**登陆接口*/
     @PostMapping("/login")
     public String loginIn(@RequestBody CustomerLoginDto customerLoginDto){
         if (customerLoginDto==null){
@@ -46,4 +57,25 @@ public class CustomerController {
         return "登陆成功";
     }
 
+    /**user访问权限*/
+    @PreAuthorize("hasAnyRole('user')")
+    @GetMapping("/user")
+    public String user(){
+        return "user访问";
+    }
+
+    /**admin访问权限*/
+    @PreAuthorize("hasAnyRole('admin')")
+    @GetMapping("/admin")
+    public String admin(){
+        return "admin访问";
+    }
+
+
+    /**修改密码接口*/
+
+    @PutMapping ("/updatePassword")
+    public int updatePassword(@RequestBody String newPassword){
+        return customerService.updatePassword(newPassword);
+    }
 }

@@ -15,7 +15,15 @@
     </select>
 
     <insert id="insertCustomer" parameterType="com.youko.customerfrontstage.bean.Customer">
-        insert into saasmall.customer values (#{id},#{name},#{password},#{mobile})
+        insert into saasmall.customer(name, password, mobile, role) values (#{name},#{password},#{mobile},#{role})
     </insert>
+
+    <select id="getCustomerByName" resultType="com.youko.customerfrontstage.bean.Customer">
+        select * from saasmall.customer where name=#{name}
+    </select>
+
+    <update id="updatePassword">
+        update saasmall.customer set password=#{newPassword} where name=#{name}
+    </update>
 
 </mapper>
