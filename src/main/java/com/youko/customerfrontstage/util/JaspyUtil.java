@@ -12,7 +12,9 @@ public class JaspyUtil {
     @Autowired
     EnvironmentStringPBEConfig config;
     static Properties properties = YmlUtils.getYml("application-dev.yml");
+    //文件里获取盐值
     static String password = properties.getProperty("jasypt.encryptor.password");
+    //文件里获取加密方式
     static String algorithm = properties.getProperty("jasypt.encryptor.algorithm");
 
     //给明码加密
@@ -27,6 +29,7 @@ public class JaspyUtil {
         return encryptor.encrypt(plainText);
 
     }
+    //这个方法是解密的方法，调用Jasypt提供的接口
     public static String decryptWithMD5(String encryptedText) {
         // 1. 创建加解密工具实例
         StandardPBEStringEncryptor encryptor = new StandardPBEStringEncryptor();
