@@ -7,12 +7,12 @@ import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 
+/**客户信息类*/
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class Customer implements Serializable {
     private static final long serialVersionUID = 1L;
-
 
     private int id;
 
@@ -24,5 +24,9 @@ public class Customer implements Serializable {
 
     private String mobile;
 
+    private String role;
 
+
+    public Customer(String name, String encode) {
+    }
 }

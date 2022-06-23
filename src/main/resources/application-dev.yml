@@ -8,6 +8,8 @@ spring:
     username: root
     password: 20020118
     driver-class-name: com.mysql.cj.jdbc.Driver
+  main:
+    allow-circular-references: true
 
 #指定mybatis映射文件的地址
 mybatis:
@@ -15,4 +17,6 @@ mybatis:
   type-aliases-package: com.youko.customerfrontstage.bean
   configuration:
     map-underscore-to-camel-case: true
+
+
 
