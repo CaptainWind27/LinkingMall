@@ -22,10 +22,10 @@ public class Commodity {
     //所属商户的名字
     private String picPath;
     //存放图片的路径
-    private String desc;
+    private String description;
     //商品的描述
     private String specs;
     //商品的规格，即商品的具体参数
-    private Tag tag;
+    private String tag;
     //商品会附加的tag
 }

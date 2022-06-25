@@ -33,6 +33,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 passwordEncoder(passwordEncoder());
     }
 
+    /**拦截请求*//*
     @Override
     protected void configure(HttpSecurity httpSecurity)throws Exception{
         httpSecurity
@@ -42,7 +43,15 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .formLogin()
                 .and()
-                .csrf().disable();/**post请求要关闭csrf验证不然报错，实际开发中开启*/
+                .csrf().disable();*//**post请求要关闭csrf验证不然报错，实际开发中开启*//*
+    }*/
+
+    /**测试端口用，放行所有请求*/
+    @Override
+    protected void configure(HttpSecurity httpSecurity)throws Exception{
+        httpSecurity.authorizeRequests().anyRequest().permitAll().and().csrf().disable();
+
     }
+
 
 }
