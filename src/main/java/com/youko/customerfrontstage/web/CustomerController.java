@@ -21,7 +21,7 @@ public class CustomerController {
 
 
     /**注册接口*/
-    @PostMapping("/register")
+    @PostMapping("/customer/register")
     public String saveCustomer(@RequestBody CustomerRegisterDto customerRegisterDto){
         if(customerRegisterDto==null){
             return "操作失败";
@@ -43,7 +43,7 @@ public class CustomerController {
 
 
     /**登陆接口*/
-    @PostMapping("/login")
+    @PostMapping("/customer/login")
     public String loginIn(@RequestBody CustomerLoginDto customerLoginDto){
         if (customerLoginDto==null){
             return "操作失败";
@@ -73,8 +73,7 @@ public class CustomerController {
 
 
     /**修改密码接口*/
-
-    @PutMapping ("/updatePassword")
+    @PutMapping ("/customer/updatePassword")
     public int updatePassword(@RequestBody String newPassword){
         return customerService.updatePassword(newPassword);
     }

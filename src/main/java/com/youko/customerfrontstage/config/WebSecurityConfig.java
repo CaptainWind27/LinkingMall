@@ -37,7 +37,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity httpSecurity)throws Exception{
         httpSecurity
                 .authorizeRequests()
-                .antMatchers(HttpMethod.POST,"/register").permitAll()
+                //给authorizeRequests添加子方法为每个URL指定自定义要求
+                //注册界面所有用户都可以访问
+                .antMatchers("/customer/register","/customer/login").permitAll()
+
+
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
