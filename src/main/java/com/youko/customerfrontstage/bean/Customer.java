@@ -26,6 +26,8 @@ public class Customer implements Serializable {
 
     private String role;
 
+    private String nickname;
+
 
     public Customer(String name, String encode) {
     }

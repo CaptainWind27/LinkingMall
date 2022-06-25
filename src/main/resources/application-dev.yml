@@ -18,6 +18,10 @@ mybatis:
   configuration:
     map-underscore-to-camel-case: true
 
+SavePath:
+  ProfilePhoto: 'C:\Users\86155\Pictures\pic'  #图片存储路径
+  ProfilePhotoMapper: '/profilePhoto/'  #图片的映射路径
+
 pagehelper:
   # 数据库方言 mysql
   helper-dialect: mysql

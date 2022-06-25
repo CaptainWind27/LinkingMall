@@ -8,11 +8,11 @@
         <result column="password" jdbcType="VARCHAR" property="password" />
         <result column="avatar" jdbcType="VARCHAR" property="avatar" />
         <result column="mobile" jdbcType="VARCHAR" property="mobile" />
+        <result column="role" jdbcType="VARCHAR" property="role"/>
+        <result column="nickname" jdbcType="VARCHAR" property="nickname"/>
     </resultMap>
 
-    <select id="selectOneCustomer" resultType="com.youko.customerfrontstage.bean.Customer">
-        select * from saasmall.customer where name=#{name} and password=#{password}
-    </select>
+
 
     <insert id="insertCustomer" parameterType="com.youko.customerfrontstage.bean.Customer">
         insert into saasmall.customer(name, password, mobile, role) values (#{name},#{password},#{mobile},#{role})
@@ -25,5 +25,11 @@
     <update id="updatePassword">
         update saasmall.customer set password=#{newPassword} where name=#{name}
     </update>
+
+    <update id="updateCustomerPhotoPath">
+        update saasmall.customer set avatar=#{customerPhotoPath} where id=#{id}
+    </update>
+
+
 
 </mapper>

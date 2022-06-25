@@ -33,29 +33,26 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 passwordEncoder(passwordEncoder());
     }
 
-    /**拦截请求*//*
+    /**拦截请求*/
     @Override
     protected void configure(HttpSecurity httpSecurity)throws Exception{
         httpSecurity
                 .authorizeRequests()
                 //给authorizeRequests添加子方法为每个URL指定自定义要求
-                //注册界面所有用户都可以访问
-                .antMatchers("/customer/register","/customer/login").permitAll()
-
-
-                .anyRequest().authenticated()
+                //注册登陆界面所有用户都可以访问
+                .antMatchers("/customer/register","/customer/login","/customer/profilePhotoUpload").permitAll()
+                .anyRequest().authenticated() // 所有请求都需要验证
                 .and()
-                .formLogin()
-                .and()
-                .csrf().disable();*//**post请求要关闭csrf验证不然报错，实际开发中开启*//*
-    }*/
-
-    /**测试端口用，放行所有请求*/
-    @Override
-    protected void configure(HttpSecurity httpSecurity)throws Exception{
-        httpSecurity.authorizeRequests().anyRequest().permitAll().and().csrf().disable();
-
+                .formLogin().disable()//关闭springsecurity默认登陆页
+                .csrf().disable();/**post请求要关闭csrf验证不然报错，实际开发中开启*/
     }
+
+//    /**测试端口用，放行所有请求*/
+//    @Override
+//    protected void configure(HttpSecurity httpSecurity)throws Exception{
+//        httpSecurity.authorizeRequests().anyRequest().permitAll().and().csrf().disable();
+//
+//    }
 
 
 }

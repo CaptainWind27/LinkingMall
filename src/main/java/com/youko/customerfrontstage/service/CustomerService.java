@@ -23,14 +23,6 @@ public class CustomerService {
         customerMapper.insertCustomer(customer);
     }
 
-    /**根据用户名和密码查询客户信息*/
-    public Customer selectCustomer(Customer customer){
-        if(customer.getName()==null||customer.getPassword()==null){
-            return null;
-        }
-        return customerMapper.selectOneCustomer(customer);
-    }
-
     /**根据用户名查询客户信息*/
     public Customer getCustomer(String name){
         return customerMapper.getCustomerByName(name);
@@ -46,6 +38,19 @@ public class CustomerService {
         //此处实际应为检测手机短信之类的操作，或者直接在个人中心修改
         return customerMapper.updatePassword(name,passwordEncoder.encode(newPassword));
     }
+
+    /**
+     * 添加图片文件服务器端路径
+     * @param id
+     * @param path
+     */
+    public void updateCustomerPhotoPath(int id,String path){
+        customerMapper.updateCustomerPhotoPath(id,path);
+    }
+
+
+
+
 
 
 
