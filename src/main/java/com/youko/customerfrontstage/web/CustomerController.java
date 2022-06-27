@@ -6,6 +6,7 @@ import com.youko.customerfrontstage.dto.customer.CustomerLoginResponseDto;
 import com.youko.customerfrontstage.dto.customer.CustomerRegisterDto;
 import com.youko.customerfrontstage.dto.customer.ResponseDto;
 import com.youko.customerfrontstage.service.CustomerService;
+import com.youko.customerfrontstage.service.CustomerUserDetailService;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -51,7 +52,7 @@ public class CustomerController {
         customer.setMobile(customerRegisterDto.getMobile());
         customer.setRole("user");
         if (customerService.getCustomer(customerRegisterDto.getName())!=null){
-            responseDto.setMsg("此账号密码重复");
+            responseDto.setMsg("此账号重复");
             responseDto.setStatus(0);
             return responseDto;
         }
@@ -81,7 +82,7 @@ public class CustomerController {
             responseDto.setStatus(12);
             return responseDto;
         }
-        if (!customer.getPassword().equals(customerLoginDto.getPassword())){
+        if (!passwordEncoder.matches(customerLoginDto.getPassword(),customer.getPassword())){
             responseDto.setMsg("密码错误");
             responseDto.setStatus(13);
             return responseDto;

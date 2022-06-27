@@ -34,6 +34,6 @@ public class CustomerUserDetailService implements UserDetailsService {
 
         List<GrantedAuthority> authorities=new ArrayList<>();
         authorities.add(new SimpleGrantedAuthority("ROLE_"+role));
-        return new User(customer.getName(),passwordEncoder.encode(customer.getPassword()),authorities);
+        return new User(customer.getName(),customer.getPassword(),authorities);
     }
 }
