@@ -40,7 +40,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 //给authorizeRequests添加子方法为每个URL指定自定义要求
                 //注册登陆界面所有用户都可以访问
-                .antMatchers("/customer/register","/customer/login","/customer/profilePhotoUpload").permitAll()
+                .antMatchers("/customer/register","/customer/login","/customer/profilePhotoUpload","/user/page").permitAll()
                 .anyRequest().authenticated() // 所有请求都需要验证
                 .and()
                 .formLogin().disable()//关闭springsecurity默认登陆页

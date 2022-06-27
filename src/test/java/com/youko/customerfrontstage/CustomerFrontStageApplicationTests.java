@@ -9,6 +9,7 @@ import com.youko.customerfrontstage.service.CustomerService;
 import com.youko.customerfrontstage.util.JaspyUtil;
 import com.youko.customerfrontstage.util.YmlUtils;
 import com.youko.customerfrontstage.web.UserPageController;
+import org.json.JSONObject;
 import org.junit.jupiter.api.Test;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +31,7 @@ class CustomerFrontStageApplicationTests {
 
     @Test
     void contextLoads() {
-        userPageController.findPage(1,2);
+
     }
 
 }
