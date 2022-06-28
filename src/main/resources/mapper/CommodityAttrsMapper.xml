@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.youko.customerfrontstage.mapper.CommodityAttrsMapper">
+
+    <resultMap id="CommodityResultMap" type="com.youko.customerfrontstage.bean.Commodity">
+        <result column="id" jdbcType="INTEGER" property="id" />
+        <result column="name" jdbcType="VARCHAR" property="name" />
+        <result column="product_id" jdbcType="FLOAT" property="commodityID" />
+        <result column="attr_value" jdbcType="JSON" property="attr_value" typeHandler="com.youko.customerfrontstage.mapper.JsonTypeHandler" />
+    </resultMap>
+
+    <select id="findAll" resultType="com.youko.customerfrontstage.bean.CommodityAttribution">
+        select * from product_attrs
+    </select>
+
+
+
+</mapper>

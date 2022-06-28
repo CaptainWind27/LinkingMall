@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.youko.customerfrontstage.mapper.SkuMapper">
+
+    <resultMap id="CommodityResultMap" type="com.youko.customerfrontstage.bean.Commodity">
+        <result column="id" jdbcType="INTEGER" property="id" />
+        <result column="product_id" jdbcType="VARCHAR" property="name" />
+        <result column="mix_price" jdbcType="FLOAT" property="price" />
+        <result column="mer_name" jdbcType="VARCHAR" property="nameOfMer" />
+        <result column="pic_path" jdbcType="VARCHAR" property="picPath" />
+        <result column="max_price" jdbcType="FLOAT" property="specs" />
+        <result column="mer_id" jdbcType="INTEGER" property="tag" />
+        <result column="stock" jdbcType="INTEGER" property="id" />
+        <result column="sale" jdbcType="INTEGER" property="name" />
+        <result column="tag" jdbcType="VARCHAR" property="tag" />
+    </resultMap>
+
+
+    </mapper>

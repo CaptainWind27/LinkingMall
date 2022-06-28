@@ -2,6 +2,7 @@ package com.youko.customerfrontstage;
 
 import com.github.pagehelper.PageInfo;
 import com.youko.customerfrontstage.bean.Commodity;
+import com.youko.customerfrontstage.mapper.CommodityAttrsMapper;
 import com.youko.customerfrontstage.mapper.CommodityMapper;
 import com.youko.customerfrontstage.mapper.CustomerMapper;
 import com.youko.customerfrontstage.service.CommodityService;
@@ -28,10 +29,11 @@ class CustomerFrontStageApplicationTests {
     UserPageController userPageController;
     @Autowired
     CommodityService commodityService;
-
+    @Autowired
+    CommodityAttrsMapper commodityAttrsMapper;
     @Test
     void contextLoads() {
-
+        System.out.println(commodityAttrsMapper.findAll().toString());
     }
 
 }
