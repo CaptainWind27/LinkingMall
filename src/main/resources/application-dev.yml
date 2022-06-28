@@ -10,6 +10,18 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
   main:
     allow-circular-references: true
+  redis:
+    database: 0
+    host: 47.101.171.217
+    port: 6379
+    password: 20020118
+  cache:
+    type: redis
+
+
+
+
+
 
 #指定mybatis映射文件的地址
 mybatis:
@@ -18,10 +30,13 @@ mybatis:
   configuration:
     map-underscore-to-camel-case: true
 
+#图片保存路径
 SavePath:
   ProfilePhoto: 'C:\Users\86155\Pictures\pic'  #图片存储路径
   ProfilePhotoMapper: '/profilePhoto/'  #图片的映射路径
 
+
+#分页查询工具
 pagehelper:
   # 数据库方言 mysql
   helper-dialect: mysql
