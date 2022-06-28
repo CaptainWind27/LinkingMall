@@ -12,8 +12,8 @@ import java.io.Serializable;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Customer implements Serializable {
-    private static final long serialVersionUID = 1L;
 
+    private static final long serialVersionUID = 8733777551777775250L;
     private int id;
 
     private String name;

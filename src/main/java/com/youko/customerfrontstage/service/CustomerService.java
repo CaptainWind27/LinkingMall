@@ -4,6 +4,10 @@ package com.youko.customerfrontstage.service;
 import com.youko.customerfrontstage.bean.Customer;
 import com.youko.customerfrontstage.mapper.CustomerMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.CachePut;
+import org.springframework.cache.annotation.Cacheable;
+import org.springframework.cache.annotation.Caching;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -19,11 +23,13 @@ public class CustomerService {
     PasswordEncoder passwordEncoder;
 
     /**保存客户信息*/
+    @CachePut(value = "customer", key = "#customer.name")
     public void saveCustomer(Customer customer){
         customerMapper.insertCustomer(customer);
     }
 
     /**根据用户名查询客户信息*/
+    @Cacheable(value = "customer")
     public Customer getCustomer(String name){
         return customerMapper.getCustomerByName(name);
     }

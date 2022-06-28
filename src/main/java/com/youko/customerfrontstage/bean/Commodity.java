@@ -4,6 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.io.Serializable;
+
 /**
  * 这个是商品的实体类，定义了商品的属性
  * 创建时间2022/6/23
@@ -11,10 +13,10 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Commodity {
+public class Commodity implements Serializable {
+    private static final long serialVersionUID = -3241196993768200964L;
     private String name;
     //商品的名字
-    private float price;
     //商品价格
     private int id;
     //唯一标识商品的编号
@@ -28,4 +30,5 @@ public class Commodity {
     //商品的规格，即商品的具体参数
     private String tag;
     //商品会附加的tag
+
 }
