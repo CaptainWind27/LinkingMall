@@ -41,11 +41,8 @@
             </if>
             <if
                     test="queryParam.searchKeyStr!=null and queryParam.searchKeyStr!=''">
-                and (
+                and
                 locate(#{queryParam.searchKeyStr},name)>0
-                or
-                locate(#{queryParam.searchKeyStr},categoryID)>0
-                )
             </if>
         </where>
         <if

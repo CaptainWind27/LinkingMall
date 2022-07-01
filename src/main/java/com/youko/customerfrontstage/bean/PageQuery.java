@@ -1,6 +1,5 @@
 package com.youko.customerfrontstage.bean;
 
-import com.github.pagehelper.PageInfo;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -35,4 +34,5 @@ public class PageQuery<T> {
      * 不在T类中的参数
      */
     private Map<String, String> queryParam;
+
 }

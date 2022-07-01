@@ -1,7 +1,7 @@
 package com.youko.customerfrontstage.dao.impl;
 
-import com.github.pagehelper.PageInfo;
 import com.youko.customerfrontstage.bean.CommoditySpu;
+import com.youko.customerfrontstage.bean.PageInfo;
 import com.youko.customerfrontstage.bean.PageQuery;
 import com.youko.customerfrontstage.bean.Sort;
 import com.youko.customerfrontstage.dao.ILuceneDao;
@@ -83,17 +83,17 @@ public class LuceneDaoImpl implements ILuceneDao {
         if (keyStr != null) {
             // 输入空格,不进行模糊查询
             if (!"".equals(keyStr.replaceAll(" ", ""))) {
-                builder.add(new QueryParser("name", analyzer).parse(keyStr), Occur.MUST);
+                builder.add(new QueryParser("goodsName", analyzer).parse(keyStr), Occur.MUST);
             }
         }
 
-        // 精确查询
-        if ("".equals(params.getCategoryID()+"")) {
-            builder.add(new TermQuery(new Term("category", params.getCategoryID()+"")), Occur.MUST);
-        }
+//        // 精确查询
+//        if (!"".equals(params.getCategoryID()+"")) {
+//            builder.add(new TermQuery(new Term("category", params.getCategoryID()+"")), Occur.MUST);
+//        }
         if (queryParam.get("lowerPrice") != null && queryParam.get("upperPrice") != null) {
             // 价格范围查询
-            builder.add(FloatPoint.newRangeQuery("price", Float.parseFloat(queryParam.get("lowerPrice")),
+            builder.add(FloatPoint.newRangeQuery("lowPrice", Float.parseFloat(queryParam.get("lowerPrice")),
                     Float.parseFloat(queryParam.get("upperPrice"))), Occur.MUST);
         }
         PageInfo pageInfo = pageQuery.getPageInfo();
