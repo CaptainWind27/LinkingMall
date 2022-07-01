@@ -22,7 +22,7 @@ class CustomerFrontStageApplicationTests {
     CommoditySpuSkuController commoditySpuSkuController;
     @Test
     void contextLoads() {
-        System.out.println(commoditySkuService.getSpecList(1));
+        System.out.println(commoditySkuService.getSpecValueOfSpu(1));
     }
 
 }

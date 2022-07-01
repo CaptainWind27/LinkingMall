@@ -2,8 +2,7 @@ package com.youko.customerfrontstage.config;
 
 
 import com.google.gson.Gson;
-import com.youko.customerfrontstage.bean.ReturnPojo;
-import net.minidev.json.JSONArray;
+import com.youko.customerfrontstage.dto.customer.ResponseDto;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.stereotype.Component;
@@ -23,10 +22,10 @@ public class CustomerAuthenticationEntryPoint implements AuthenticationEntryPoin
     public void commence(HttpServletRequest request, HttpServletResponse response, AuthenticationException authException) throws IOException, ServletException {
 
         response.setContentType("text/json;charset=utf-8");
-        ReturnPojo returnPojo = new ReturnPojo();
-        returnPojo.setReInt(10);
-        returnPojo.setReString("无访问权限");
-        response.getWriter().write(new Gson().toJson(returnPojo));
+        ResponseDto responseDto=new ResponseDto();
+        responseDto.setStatus(0);
+        responseDto.setMsg("无访问权限");
+        response.getWriter().write(new Gson().toJson(responseDto));
 
     }
 }

@@ -3,11 +3,12 @@ package com.youko.customerfrontstage.dto.commodity;
 import com.youko.customerfrontstage.bean.*;
 import lombok.Data;
 
+import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
 
 @Data
-public class CommodityReturnDto {
+public class CommodityReturnDto implements Serializable {
     List<SKUReturnDto> skuReturnDto;
     CommoditySpu spu;
     List<CommoditySpec> cs;

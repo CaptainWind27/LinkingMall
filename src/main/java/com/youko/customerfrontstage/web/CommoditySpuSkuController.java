@@ -25,9 +25,16 @@ public class CommoditySpuSkuController {
         commodityReturnDto.setSkuReturnDto(commoditySkuService.getReturnSku(commodityID));
         return commodityReturnDto;
     }
+
+    /**
+     *
+     * @param commodityID 当前也的spuID
+     * @return 返回spu的规格和规格值
+     */
     @GetMapping("/user/page/getSpecAndValue")
-    public List<SpecValueDto> getSpecValue(@Param("commodityID")int commodityID) {
-        List<SpecValueDto> specValueDtos = commoditySkuService.getSpecValueOfSpu(commodityID);
-        return  specValueDtos;
+    public SpecValueDto getSpecValue(@Param("commodityID")int commodityID) {
+        return commoditySkuService.getSpecValueOfSpu(commodityID);
     }
+
+
 }

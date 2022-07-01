@@ -58,44 +58,48 @@ public class CommoditySkuService {
         return skuReturnDtos;
     }
 
-    public List<SpecValueDto> getSpecValueOfSpu(int spuID){
-        List<CommoditySpuSpec> ss = skuMapper.findSS(spuID);
-        List<CommoditySpec> cs = new ArrayList<>();
-        for (CommoditySpuSpec s : ss) {
-            cs.add(skuMapper.findSpec(s.getSpecID()));
-        }
-        List<SpecValueDto> specValueDtos =new ArrayList<>();
-        for (CommoditySpec c : cs) {
-            SpecValueDto specValueDto = new SpecValueDto();
-            specValueDto.setSpec(c.getSpecName());
-            List<CommoditySpecValue> sv = skuMapper.findSV(c.getId());
-            List<String> valueList = new ArrayList<>();
-            for (CommoditySpecValue commoditySpecValue : sv) {
-                valueList.add(commoditySpecValue.getSpecValue());
-            }
-            specValueDto.setValues(valueList);
-            specValueDtos.add(specValueDto);
-        }
-        return specValueDtos;
-    }
-
-    public List<SpecOfSpu> getSpecList(int spuID){
+    public SpecValueDto getSpecValueOfSpu(int spuID){
         List<SpecOfSpu> specValueDtos = new ArrayList<>();
         List<CommoditySpuSpec> ss = skuMapper.findSS(spuID);
         List<CommoditySpec> cs = new ArrayList<>();
         for (CommoditySpuSpec s : ss) {
             cs.add(skuMapper.findSpec(s.getSpecID()));
         }
+
+        List<CommoditySpecValue> commoditySpecValues = new ArrayList<>();
         for (CommoditySpec c : cs) {
             SpecOfSpu specOfSpu = new SpecOfSpu();
             specOfSpu.setSpecID(c.getId());
             specOfSpu.setSpec(c.getSpecName());
             specValueDtos.add(specOfSpu);
-
+            List<CommoditySpecValue> sv = skuMapper.findSV(c.getId());
+            commoditySpecValues.addAll(sv);
         }
-
-        return specValueDtos;
+        SpecValueDto specValueDto = new SpecValueDto();
+        specValueDto.setSpecOfSpu(specValueDtos);
+        specValueDto.setSpecValues(commoditySpecValues);
+        return specValueDto;
     }
+
+//    public List<SpecOfSpu> getSpecList(int spuID){
+//        List<SpecOfSpu> specValueDtos = new ArrayList<>();
+//        List<CommoditySpuSpec> ss = skuMapper.findSS(spuID);
+//        List<CommoditySpec> cs = new ArrayList<>();
+//        for (CommoditySpuSpec s : ss) {
+//            cs.add(skuMapper.findSpec(s.getSpecID()));
+//        }
+//        List<CommoditySpecValue> commoditySpecValues = new ArrayList<>();
+//        for (CommoditySpec c : cs) {
+//            SpecOfSpu specOfSpu = new SpecOfSpu();
+//            specOfSpu.setSpecID(c.getId());
+//            specOfSpu.setSpec(c.getSpecName());
+//            specValueDtos.add(specOfSpu);
+//            List<CommoditySpecValue> sv = skuMapper.findSV(c.getId());
+//            commoditySpecValues.addAll(sv);
+//        }
+//
+//        return specValueDtos;
+//    }
 
 
 }
