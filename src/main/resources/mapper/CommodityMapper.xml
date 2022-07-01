@@ -5,10 +5,13 @@
     <resultMap id="CommodityResultMap" type="com.youko.customerfrontstage.bean.Commodity">
         <result column="id" jdbcType="INTEGER" property="id" />
         <result column="name" jdbcType="VARCHAR" property="name" />
-        <result column="price" jdbcType="FLOAT" property="price" />
-        <result column="name_of_mer" jdbcType="VARCHAR" property="nameOfMer" />
+        <result column="mix_price" jdbcType="FLOAT" property="price" />
+        <result column="mer_name" jdbcType="VARCHAR" property="nameOfMer" />
         <result column="pic_path" jdbcType="VARCHAR" property="picPath" />
-        <result column="specs" jdbcType="VARCHAR" property="specs" />
+        <result column="max_price" jdbcType="FLOAT" property="specs" />
+        <result column="mer_id" jdbcType="INTEGER" property="tag" />
+        <result column="stock" jdbcType="INTEGER" property="id" />
+        <result column="sale" jdbcType="INTEGER" property="name" />
         <result column="tag" jdbcType="VARCHAR" property="tag" />
     </resultMap>
 

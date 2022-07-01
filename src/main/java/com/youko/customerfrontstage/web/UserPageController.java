@@ -1,16 +1,13 @@
 package com.youko.customerfrontstage.web;
 
-import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.youko.customerfrontstage.bean.Commodity;
 import com.youko.customerfrontstage.bean.Page;
-import com.youko.customerfrontstage.dto.customer.PageDto;
-import com.youko.customerfrontstage.mapper.CommodityMapper;
+import com.youko.customerfrontstage.dto.commodity.CommodityReturnDto;
 import com.youko.customerfrontstage.service.CommodityService;
+import com.youko.customerfrontstage.service.CommoditySkuService;
 import org.apache.ibatis.annotations.Param;
-import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.*;
@@ -41,4 +38,5 @@ public class UserPageController {
         page.setDayaList(commodityPageInfo.getList());
         return page;
     }
+
 }

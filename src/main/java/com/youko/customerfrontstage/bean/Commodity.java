@@ -4,8 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.io.Serializable;
-
 /**
  * 这个是商品的实体类，定义了商品的属性
  * 创建时间2022/6/23
@@ -13,23 +11,25 @@ import java.io.Serializable;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Commodity implements Serializable {
-    private static final long serialVersionUID = -3241196993768200964L;
-    private String name;
-    //商品的名字
-    private float price;
-    //商品价格
+public class Commodity {
+    //主页商品的id
     private int id;
-    //唯一标识商品的编号
-    private String nameOfMer;
-    //所属商户的名字
+    //商品的名字
+    private String name;
+    //商品的最低价格
+    private float minPrice;
+    //商品的最高价格，一种商品就和最低相同
+    private float maxPrice;
+    //商家的名字
+    private String merName;
+    //商家的id
+    private int merID;
+    //商品流览图的路径
     private String picPath;
-    //存放图片的路径
-    private String description;
-    //商品的描述
-    private String specs;
-    //商品的规格，即商品的具体参数
+    //商品的库存
+    private int stock;
+    //商品的销量
+    private int sale;
+    //商品的标签
     private String tag;
-    //商品会附加的tag
-
 }
