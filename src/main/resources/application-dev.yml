@@ -25,6 +25,7 @@ spring:
 
 #指定mybatis映射文件的地址
 mybatis:
+  typeHandlersPackage: com.nh.micro.ext.th
   mapper-locations: classpath:mapper/*Mapper.xml
   type-aliases-package: com.youko.customerfrontstage.bean
   configuration:

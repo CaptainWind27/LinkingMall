@@ -16,7 +16,7 @@
     </resultMap>
 
     <select id="findAll" resultType="com.youko.customerfrontstage.bean.Commodity">
-        select * from products
+        select * from commodity
     </select>
 
 

@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Commodity {
-    //逐渐商品的id
+    //主页商品的id
     private int id;
     //商品的名字
     private String name;

@@ -1,19 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.youko.customerfrontstage.mapper.SkuMapper">
+<!--    <resultMap id="CommoditySpuMap" type="com.youko.customerfrontstage.bean.CommoditySpu">-->
+<!--        <result column="id" jdbcType="INTEGER" property="id" />-->
+<!--        <result column="spu_no" jdbcType="VARCHAR" property="spuNo" />-->
+<!--        <result column="goods_name" jdbcType="VARCHAR" property="goodsName" />-->
+<!--        <result column="low_price" jdbcType="FLOAT" property="lowPrice" />-->
+<!--        <result column="category_id" jdbcType="INTEGER" property="categoryID" />-->
+<!--        <result column="brand_id" jdbcType="INTEGER" property="brandID"/>-->
+<!--    </resultMap>-->
+<!--    <resultMap id="SpuSpecResultMap" type="com.youko.customerfrontstage.bean.CommoditySpuSpec">-->
+<!--        <result column="id" jdbcType="INT" property="id" />-->
+<!--        <result column="spu_id" jdbcType="VARCHAR" property="spuID" />-->
+<!--        <result column="spec_id" jdbcType="VARCHAR" property="specID" />-->
+<!--    </resultMap>-->
+<!--    <resultMap id="CustomerResultMap" type="com.youko.customerfrontstage.bean.Customer">-->
+<!--        <result column="id" jdbcType="INTEGER" property="id" />-->
+<!--        <result column="name" jdbcType="VARCHAR" property="name" />-->
+<!--        <result column="password" jdbcType="VARCHAR" property="password" />-->
+<!--        <result column="avatar" jdbcType="VARCHAR" property="avatar" />-->
+<!--        <result column="mobile" jdbcType="VARCHAR" property="mobile" />-->
+<!--        <result column="role" jdbcType="VARCHAR" property="role"/>-->
+<!--        <result column="nickname" jdbcType="VARCHAR" property="nickname"/>-->
+<!--    </resultMap>-->
 
-    <resultMap id="CommodityResultMap" type="com.youko.customerfrontstage.bean.Commodity">
-        <result column="id" jdbcType="INTEGER" property="id" />
-        <result column="product_id" jdbcType="VARCHAR" property="name" />
-        <result column="mix_price" jdbcType="FLOAT" property="price" />
-        <result column="mer_name" jdbcType="VARCHAR" property="nameOfMer" />
-        <result column="pic_path" jdbcType="VARCHAR" property="picPath" />
-        <result column="max_price" jdbcType="FLOAT" property="specs" />
-        <result column="mer_id" jdbcType="INTEGER" property="tag" />
-        <result column="stock" jdbcType="INTEGER" property="id" />
-        <result column="sale" jdbcType="INTEGER" property="name" />
-        <result column="tag" jdbcType="VARCHAR" property="tag" />
-    </resultMap>
-
-
-    </mapper>
+    <select id="findOneSpu" resultType="com.youko.customerfrontstage.bean.CommoditySpu">
+        select * from commodity_spu where id = #{id}
+    </select>
+    <select id="findSS" resultType="com.youko.customerfrontstage.bean.CommoditySpuSpec">
+        select * from commodity_spu_spec where spu_id = #{spuID}
+    </select>
+    <select id="findSpec" resultType="com.youko.customerfrontstage.bean.CommoditySpec">
+        select * from commodity_spec where id = #{id}
+    </select>
+    <select id="findSV" resultType="com.youko.customerfrontstage.bean.CommoditySpecValue">
+        select * from commodity_spec_value where spec_id = #{specID}
+    </select>
+    <select id="findSku" resultType="com.youko.customerfrontstage.bean.CommoditySku">
+        select * from commodity_sku where spu_id = #{spuID}
+    </select>
+    <select id="findSSV" resultType="com.youko.customerfrontstage.bean.CommoditySkuSpecValue">
+        select * from commodity_sku_spec_value where sku_id = #{skuID}
+    </select>
+</mapper>

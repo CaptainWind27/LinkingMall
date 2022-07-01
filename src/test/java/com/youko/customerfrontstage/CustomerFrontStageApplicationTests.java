@@ -1,39 +1,28 @@
 package com.youko.customerfrontstage;
 
-import com.github.pagehelper.PageInfo;
-import com.youko.customerfrontstage.bean.Commodity;
-import com.youko.customerfrontstage.mapper.CommodityAttrsMapper;
+import com.youko.customerfrontstage.dto.commodity.CommodityReturnDto;
 import com.youko.customerfrontstage.mapper.CommodityMapper;
-import com.youko.customerfrontstage.mapper.CustomerMapper;
+import com.youko.customerfrontstage.mapper.SkuMapper;
 import com.youko.customerfrontstage.service.CommodityService;
-import com.youko.customerfrontstage.service.CustomerService;
-import com.youko.customerfrontstage.util.JaspyUtil;
-import com.youko.customerfrontstage.util.YmlUtils;
+import com.youko.customerfrontstage.service.CommoditySkuService;
+import com.youko.customerfrontstage.web.CommoditySpuSkuController;
 import com.youko.customerfrontstage.web.UserPageController;
-import org.json.JSONObject;
 import org.junit.jupiter.api.Test;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.security.access.method.P;
-
-import java.util.List;
-import java.util.Properties;
 
 @MapperScan("com.youko.customerfrontstage.mapper")
 @SpringBootTest
 class CustomerFrontStageApplicationTests {
+
     @Autowired
-    CommodityMapper commodityMapper;
+    CommoditySkuService commoditySkuService;
     @Autowired
-    UserPageController userPageController;
-    @Autowired
-    CommodityService commodityService;
-    @Autowired
-    CommodityAttrsMapper commodityAttrsMapper;
+    CommoditySpuSkuController commoditySpuSkuController;
     @Test
     void contextLoads() {
-        System.out.println(commodityAttrsMapper.findAll().toString());
+        System.out.println(commoditySkuService.getSpecList(1));
     }
 
 }
