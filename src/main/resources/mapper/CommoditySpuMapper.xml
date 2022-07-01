@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.youko.customerfrontstage.mapper.CommoditySpuMapper">
+
+    <resultMap id="CommoditySpuResultMap" type="com.youko.customerfrontstage.bean.CommoditySpu">
+        <result column="id" jdbcType="INTEGER" property="id" />
+        <result column="spu_no" jdbcType="VARCHAR" property="spuNo" />
+        <result column="goods_name" jdbcType="VARCHAR" property="goodsName" />
+        <result column="low_price" jdbcType="FLOAT" property="lowPrice" />
+        <result column="category_id" jdbcType="INTEGER" property="categoryID" />
+        <result column="brand_id" jdbcType="INTEGER" property="brandID" />
+    </resultMap>
+
+    <select id="getCommoditySpuById" resultType="com.youko.customerfrontstage.bean.CommoditySpu">
+        select * from saasmall.commodity_spu where id=#{id}
+    </select>
+
+    <select id="getAllCommoditySpu" resultType="com.youko.customerfrontstage.bean.CommoditySpu">
+        select * from  saasmall.commodity_spu
+    </select>
+
+    <select id="getCommoditySpuList"
+            parameterType="com.youko.customerfrontstage.bean.PageQuery"
+            resultType="com.youko.customerfrontstage.bean.CommoditySpu">
+        SELECT * FROM saasmall.commodity_spu
+        <where>
+            <if test="params.spuNo!=null and params.spuNo!='' ">
+                and spu_no=#{params.spuNo}
+            </if>
+            <if test="params.goodsName!=null and params.goodsName!='' ">
+                and goods_name=#{params.goodsName}
+            </if>
+            <if test="params.lowPrice!=null and params.lowPrice!='' ">
+                and low_price=#{params.lowPrice}
+            </if>
+            <if test="params.categoryID!=null and params.categoryID!='' ">
+                and category_id=#{params.categoryID}
+            </if>
+            <if test="params.brandID!=null and params.brandID!='' ">
+                and brand_id=#{params.brandID}
+            </if>
+            <if
+                    test="queryParam.searchKeyStr!=null and queryParam.searchKeyStr!=''">
+                and (
+                locate(#{queryParam.searchKeyStr},name)>0
+                or
+                locate(#{queryParam.searchKeyStr},categoryID)>0
+                )
+            </if>
+        </where>
+        <if
+                test="sort.field!=null and sort.field!='' and sort.order!=null and sort.order!=''">
+            order by ${sort.field} ${sort.order}
+        </if>
+    </select>
+
+    <insert id="addCommoditySpu" useGeneratedKeys="true" keyProperty="id"
+            parameterType="com.youko.customerfrontstage.bean.CommoditySpu">
+        insert into saasmall.commodity_spu('spu_no','goods_name','low_price','category_id','brand_id')
+        values (#{spuNo},#{goodsName},#{lowPrice},#{categoryID},#{brandID})
+    </insert>
+
+    <delete id="deleteCommoditySpuById" parameterType="String">
+        delete from saasmall.commodity_spu where id=#{id}
+    </delete>
+
+    <update id="updateCommoditySPuById"
+            parameterType="com.youko.customerfrontstage.bean.CommoditySpu">
+        UPDATE saasmall.commodity_spu SET
+        spu_no=#{spuNo}, goods_name=#{goodsName},
+        low_price=#{lowPrice}, category_id=#{categoryID}, brand_id=#{brandID}
+        <where>id = #{id}</where>
+    </update>
+
+
+
+</mapper>
