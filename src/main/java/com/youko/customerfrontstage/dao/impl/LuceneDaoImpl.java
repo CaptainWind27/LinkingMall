@@ -47,10 +47,14 @@ public class LuceneDaoImpl implements ILuceneDao {
             doc.add(new StringField("spuNo",commoditySpu.getSpuNo(),Field.Store.YES));
             doc.add(new TextField("goodsName",commoditySpu.getGoodsName(),Field.Store.YES));
 
+            // 保存price,
+            float lowPrice=commoditySpu.getLowPrice();
             //建立倒排索引
-            doc.add(new FloatPoint("lowPrice",commoditySpu.getLowPrice()));
+            doc.add(new FloatPoint("lowPrice",lowPrice));
             //正排序用于排序聚合
-            doc.add(new FloatDocValuesField("lowPrice",commoditySpu.getLowPrice()));
+            doc.add(new FloatDocValuesField("lowPrice",lowPrice));
+            //储存到索引库
+            doc.add(new StoredField("lowPrice", lowPrice));
 
             doc.add(new StringField("categoryID",commoditySpu.getCategoryID()+"", Field.Store.YES));
             doc.add(new StringField("brandID",commoditySpu.getBrandID()+"", Field.Store.YES));
