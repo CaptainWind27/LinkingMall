@@ -17,4 +17,15 @@ public interface CommodityMapper {
      * @return 返回商品类的集合
      */
     List<Commodity> findAll();
+
+    /**
+     * 根据id查询商品
+     * @param id
+     * @return
+     */
+    Commodity findCommodityById(int id);
+
+
+
+
 }

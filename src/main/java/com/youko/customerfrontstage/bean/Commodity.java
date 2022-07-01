@@ -17,6 +17,7 @@ public class Commodity implements Serializable {
     private static final long serialVersionUID = -3241196993768200964L;
     private String name;
     //商品的名字
+    private float price;
     //商品价格
     private int id;
     //唯一标识商品的编号
