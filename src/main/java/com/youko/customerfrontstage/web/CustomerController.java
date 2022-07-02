@@ -76,15 +76,12 @@ public class CustomerController {
         }
         if(customer==null){
             responseDto.setMsg("查无此号");
-            /**
-              12为为查找到的错误
-             */
-            responseDto.setStatus(12);
+            responseDto.setStatus(0);
             return responseDto;
         }
         if (!passwordEncoder.matches(customerLoginDto.getPassword(),customer.getPassword())){
             responseDto.setMsg("密码错误");
-            responseDto.setStatus(13);
+            responseDto.setStatus(0);
             return responseDto;
         }
         customerLoginResponseDto.setMsg("登陆成功");
@@ -96,19 +93,19 @@ public class CustomerController {
         return customerLoginResponseDto;
     }
 
-    /**user访问权限*/
-    @PreAuthorize("hasAnyRole('user')")
-    @GetMapping("/customer/user")
-    public String user(){
-        return "user访问";
-    }
-
-    /**admin访问权限*/
-    @PreAuthorize("hasAnyRole('admin')")
-    @GetMapping("/customer/admin")
-    public String admin(){
-        return "admin访问";
-    }
+//    /**user访问权限*/
+//    @PreAuthorize("hasAnyRole('user')")
+//    @GetMapping("/customer/user")
+//    public String user(){
+//        return "user访问";
+//    }
+//
+//    /**admin访问权限*/
+//    @PreAuthorize("hasAnyRole('admin')")
+//    @GetMapping("/customer/admin")
+//    public String admin(){
+//        return "admin访问";
+//    }
 
 
     /**修改密码接口*/

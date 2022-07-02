@@ -8,6 +8,7 @@ import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.cache.annotation.Caching;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -21,6 +22,8 @@ public class CustomerService {
     CustomerMapper customerMapper;
     @Autowired
     PasswordEncoder passwordEncoder;
+    @Autowired
+    private RedisTemplate redisTemplate;
 
     /**保存客户信息*/
     @CachePut(value = "customer", key = "#customer.name")

@@ -10,6 +10,12 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
   main:
     allow-circular-references: true
+    #配置单次上传文件大小
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 10MB
+      max-request-size: 100MB
   redis:
     database: 0
     host: 47.101.171.217

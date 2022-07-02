@@ -30,4 +30,12 @@ public class CommodityService {
         return commodityPageInfo.getList();
     }
 
+    public Commodity selectById(int id){
+        return commodityMapper.findCommodityById(id);
+    }
+
+    public List<Commodity> selectAll(){
+        return commodityMapper.findAll();
+    }
+
 }

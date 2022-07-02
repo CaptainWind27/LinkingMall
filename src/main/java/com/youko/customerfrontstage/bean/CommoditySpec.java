@@ -5,7 +5,9 @@ import lombok.Data;
 import java.io.Serializable;
 
 @Data
-public class CommoditySpec  implements Serializable {
+public class CommoditySpec implements Serializable {
+
+    private static final long serialVersionUID = 1378583793424047196L;
     int id;
     String specNo;
     String specName;

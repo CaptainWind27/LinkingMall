@@ -6,6 +6,8 @@ import java.io.Serializable;
 
 @Data
 public class CommoditySku implements Serializable {
+
+    private static final long serialVersionUID = 983886923534349162L;
     int id;
     String skuNo;
     String skuName;

@@ -16,8 +16,13 @@
     </resultMap>
 
     <select id="findAll" resultType="com.youko.customerfrontstage.bean.Commodity">
-        select * from commodity
+        select * from saasmall.commodity
     </select>
+
+    <select id="findCommodityById" resultType="com.youko.customerfrontstage.bean.Commodity">
+        select * from saasmall.commodity where id=#{id}
+    </select>
+
 
 
 
