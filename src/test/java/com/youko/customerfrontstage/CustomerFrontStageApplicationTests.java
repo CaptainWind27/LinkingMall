@@ -8,9 +8,11 @@ import com.youko.customerfrontstage.dao.ILuceneDao;
 import com.youko.customerfrontstage.dao.impl.LuceneDaoImpl;
 import com.youko.customerfrontstage.dto.commodity.CommodityReturnDto;
 import com.youko.customerfrontstage.mapper.CommodityMapper;
+import com.youko.customerfrontstage.mapper.PictureMapper;
 import com.youko.customerfrontstage.mapper.SkuMapper;
 import com.youko.customerfrontstage.service.CommodityService;
 import com.youko.customerfrontstage.service.CommoditySkuService;
+import com.youko.customerfrontstage.service.PictureService;
 import com.youko.customerfrontstage.web.CommoditySpuSkuController;
 import com.youko.customerfrontstage.web.UserPageController;
 import org.apache.lucene.queryparser.classic.ParseException;
@@ -28,27 +30,27 @@ import java.util.Map;
 class CustomerFrontStageApplicationTests {
 
     @Autowired
-    ILuceneDao luceneDao;
+    PictureService pictureService;
 
     @Test
     void contextLoads() throws IOException, ParseException {
-        PageInfo pageInfo=new PageInfo();
-        pageInfo.setPageNum(1);
-        pageInfo.setPageSize(2);
-        Sort sort=new Sort();
-        sort.setField("lowPrice");
-        sort.setOrder("asc");
-        CommoditySpu commoditySpu=new CommoditySpu();
-        Map<String,String> queryParam=new HashMap<String,String>();
-        queryParam.put("searchKeyStr","小米");
-        PageQuery<CommoditySpu> pageQuery=new PageQuery<CommoditySpu>();
-
-
-        pageQuery.setPageInfo(pageInfo);
-        pageQuery.setSort(sort);
-        pageQuery.setQueryParam(queryParam);
-        pageQuery.setParams(commoditySpu);
-        System.out.println(luceneDao.searchCommoditySpu(pageQuery));
+//        PageInfo pageInfo=new PageInfo();
+//        pageInfo.setPageNum(1);
+//        pageInfo.setPageSize(2);
+//        Sort sort=new Sort();
+//        sort.setField("lowPrice");
+//        sort.setOrder("asc");
+//        CommoditySpu commoditySpu=new CommoditySpu();
+//        Map<String,String> queryParam=new HashMap<String,String>();
+//        queryParam.put("searchKeyStr","小米");
+//        PageQuery<CommoditySpu> pageQuery=new PageQuery<CommoditySpu>();
+//
+//
+//        pageQuery.setPageInfo(pageInfo);
+//        pageQuery.setSort(sort);
+//        pageQuery.setQueryParam(queryParam);
+//        pageQuery.setParams(commoditySpu);
+//        System.out.println(luceneDao.searchCommoditySpu(pageQuery));
 
     }
 

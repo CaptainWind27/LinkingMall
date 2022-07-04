@@ -3,7 +3,9 @@ package com.youko.customerfrontstage.service;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.youko.customerfrontstage.bean.Commodity;
+import com.youko.customerfrontstage.bean.CommoditySpu;
 import com.youko.customerfrontstage.mapper.CommodityMapper;
+import com.youko.customerfrontstage.mapper.SkuMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +18,8 @@ import java.util.List;
 public class CommodityService {
     @Autowired
     CommodityMapper commodityMapper;
+    @Autowired
+    SkuMapper skuMapper;
 
     /**
      * ，负责实现分页算法，调用mapper中的findall()方法
@@ -23,11 +27,10 @@ public class CommodityService {
      * @param pageSize 页的大小
      * @return 商品的集合
      */
-    public List<Commodity> findByPage(int pageNum,int pageSize){
+    public PageInfo<CommoditySpu> findByPage(int pageNum,int pageSize){
         PageHelper.startPage(pageNum,pageSize);
-        List<Commodity> commodities= commodityMapper.findAll();
-        PageInfo<Commodity> commodityPageInfo = new PageInfo<>(commodities);
-        return commodityPageInfo.getList();
+        List<CommoditySpu> spus = skuMapper.findAllSpu();
+        return new PageInfo<>(spus);
     }
 
     public Commodity selectById(int id){

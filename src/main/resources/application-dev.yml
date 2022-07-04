@@ -23,8 +23,13 @@ spring:
     password: 20020118
   cache:
     type: redis
+  web:
+    resources:
+      static-locations: file:D:\IdeaProject\customerFrontStage\src\main\resources\static
 
 
+prop:
+  upload-folder: E:/webPicture
 
 
 

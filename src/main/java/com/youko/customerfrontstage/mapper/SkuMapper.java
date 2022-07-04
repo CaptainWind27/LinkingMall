@@ -21,4 +21,6 @@ public interface SkuMapper {
      */
     List<CommoditySkuSpecValue> findSSV(int skuID);
 
+    List<CommoditySpu> findAllSpu();
+
 }

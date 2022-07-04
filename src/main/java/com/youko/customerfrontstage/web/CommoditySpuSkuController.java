@@ -1,8 +1,11 @@
 package com.youko.customerfrontstage.web;
 
+import com.youko.customerfrontstage.bean.PicturePath;
 import com.youko.customerfrontstage.dto.commodity.CommodityReturnDto;
 import com.youko.customerfrontstage.dto.commodity.SpecValueDto;
+import com.youko.customerfrontstage.mapper.PictureMapper;
 import com.youko.customerfrontstage.service.CommoditySkuService;
+import com.youko.customerfrontstage.service.PictureService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,6 +22,8 @@ import java.util.List;
 public class CommoditySpuSkuController {
     @Autowired
     CommoditySkuService commoditySkuService;
+    @Autowired
+    PictureService pictureService;
     @GetMapping ("/user/page/commoditySkus")
     public CommodityReturnDto returnSpuSku(@Param("commodityID") int commodityID){
         CommodityReturnDto commodityReturnDto = commoditySkuService.selectSpu(commodityID);

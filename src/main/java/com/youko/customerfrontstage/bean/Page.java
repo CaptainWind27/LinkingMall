@@ -16,7 +16,7 @@ public class Page<T> implements Serializable {
     //一个分页中的大小
     private int pageSize;
     //一个分页page中的数据<T>
-    private List<T> dayaList;
+    private List<T> dataList;
     //page中的数据量
     //private int dataSize;
 }

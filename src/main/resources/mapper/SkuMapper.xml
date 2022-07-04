@@ -42,4 +42,7 @@
     <select id="findSSV" resultType="com.youko.customerfrontstage.bean.CommoditySkuSpecValue">
         select * from commodity_sku_spec_value where sku_id = #{skuID}
     </select>
+    <select id="findAllSpu" resultType="com.youko.customerfrontstage.bean.CommoditySpu">
+        select * from commodity_spu
+    </select>
 </mapper>
