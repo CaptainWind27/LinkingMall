@@ -4,7 +4,6 @@
 
     <resultMap id="CommoditySpuResultMap" type="com.youko.customerfrontstage.bean.CommoditySpu">
         <result column="id" jdbcType="INTEGER" property="id" />
-        <result column="spu_no" jdbcType="VARCHAR" property="spuNo" />
         <result column="goods_name" jdbcType="VARCHAR" property="goodsName" />
         <result column="low_price" jdbcType="FLOAT" property="lowPrice" />
         <result column="category_id" jdbcType="INTEGER" property="categoryID" />
@@ -24,9 +23,6 @@
             resultType="com.youko.customerfrontstage.bean.CommoditySpu">
         SELECT * FROM saasmall.commodity_spu
         <where>
-            <if test="params.spuNo!=null and params.spuNo!='' ">
-                and spu_no=#{params.spuNo}
-            </if>
             <if test="params.goodsName!=null and params.goodsName!='' ">
                 and goods_name=#{params.goodsName}
             </if>
@@ -43,7 +39,6 @@
                     test="queryParam.searchKeyStr!=null and queryParam.searchKeyStr!=''">
                 and (
                 locate(#{queryParam.searchKeyStr},name)>0
-                
                 )
             </if>
         </where>
@@ -55,8 +50,8 @@
 
     <insert id="addCommoditySpu" useGeneratedKeys="true" keyProperty="id"
             parameterType="com.youko.customerfrontstage.bean.CommoditySpu">
-        insert into saasmall.commodity_spu('spu_no','goods_name','low_price','category_id','brand_id')
-        values (#{spuNo},#{goodsName},#{lowPrice},#{categoryID},#{brandID})
+        insert into saasmall.commodity_spu('goods_name','low_price','category_id','brand_id')
+        values (#{goodsName},#{lowPrice},#{categoryID},#{brandID})
     </insert>
 
     <delete id="deleteCommoditySpuById" parameterType="String">
@@ -66,7 +61,7 @@
     <update id="updateCommoditySPuById"
             parameterType="com.youko.customerfrontstage.bean.CommoditySpu">
         UPDATE saasmall.commodity_spu SET
-        spu_no=#{spuNo}, goods_name=#{goodsName},
+         goods_name=#{goodsName},
         low_price=#{lowPrice}, category_id=#{categoryID}, brand_id=#{brandID}
         <where>id = #{id}</where>
     </update>

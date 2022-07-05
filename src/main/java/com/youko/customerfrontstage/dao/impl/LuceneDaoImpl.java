@@ -44,7 +44,6 @@ public class LuceneDaoImpl implements ILuceneDao {
         for(CommoditySpu commoditySpu:commoditySpuList){
             Document doc=new Document();
             doc.add(new StringField("id",commoditySpu.getId()+"", Field.Store.YES));
-            doc.add(new StringField("spuNo",commoditySpu.getSpuNo(),Field.Store.YES));
             doc.add(new TextField("goodsName",commoditySpu.getGoodsName(),Field.Store.YES));
 
             // 保存price,
@@ -112,7 +111,6 @@ public class LuceneDaoImpl implements ILuceneDao {
             CommoditySpu commoditySpu = new CommoditySpu();
 
             commoditySpu.setId(Integer.parseInt(doc.get("id")));
-            commoditySpu.setSpuNo(doc.get("spuNo"));
             commoditySpu.setGoodsName(doc.get("goodsName"));
             commoditySpu.setLowPrice(Float.parseFloat(doc.get("lowPrice")));
             commoditySpu.setCategoryID(Integer.parseInt(doc.get("categoryID")));
@@ -127,7 +125,6 @@ public class LuceneDaoImpl implements ILuceneDao {
     public void addCommoditySpuIndex(CommoditySpu commoditySpu) throws IOException {
         Document doc = new Document();
         doc.add(new StringField("id", commoditySpu.getId()+"", Field.Store.YES));
-        doc.add(new StringField("spuNo",commoditySpu.getSpuNo(),Field.Store.YES));
         doc.add(new TextField("goodsName",commoditySpu.getGoodsName(),Field.Store.YES));
 
         //建立倒排索引
