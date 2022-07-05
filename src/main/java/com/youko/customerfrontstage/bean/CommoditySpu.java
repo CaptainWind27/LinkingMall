@@ -13,7 +13,6 @@ public class CommoditySpu implements Serializable {
 
     private static final long serialVersionUID = -8937390806854425788L;
     int id;
-    String spuNo;
     String goodsName;
     float lowPrice;
     int categoryID;
