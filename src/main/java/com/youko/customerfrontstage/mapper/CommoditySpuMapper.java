@@ -1,12 +1,16 @@
 package com.youko.customerfrontstage.mapper;
 
+import com.youko.customerfrontstage.bean.CommodityCategory;
 import com.youko.customerfrontstage.bean.CommoditySpu;
 import com.youko.customerfrontstage.bean.PageQuery;
+import com.youko.customerfrontstage.dto.commodity.CommodityReturnDto;
 import org.apache.ibatis.annotations.Mapper;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 @Mapper
+@Repository
 public interface CommoditySpuMapper {
     /**
      * 通过id获取商品
@@ -43,6 +47,7 @@ public interface CommoditySpuMapper {
      * @param commoditySpu
      */
     public void updateCommoditySPuById(CommoditySpu commoditySpu);
+
 
 
 }
