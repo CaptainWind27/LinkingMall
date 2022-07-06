@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.youko.customerfrontstage.mapper.CartMapper">
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id">
+        insert into commodity_cart(id,customer_id,sku_id,num)
+        values (#{id},#{customerID},#{skuID},#{num})
+    </insert>
+    <select id="findByCustomerID" resultType="com.youko.customerfrontstage.bean.CartItem">
+        select * from commodity_cart where customer_id = #{customerID}
+    </select>
+
+    <update id="updateNumById" >
+        update commodity_cart set num = #{num} where id = #{id}
+    </update>
+
+    <select id="findCartItemByID" resultType="com.youko.customerfrontstage.bean.CartItem">
+        select * from commodity_cart where id = #{id}
+    </select>
+</mapper>

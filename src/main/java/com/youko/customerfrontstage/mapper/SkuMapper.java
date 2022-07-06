@@ -23,4 +23,8 @@ public interface SkuMapper {
 
     List<CommoditySpu> findAllSpu();
 
+    CommoditySku findOneSku(int id);
+
+    CommoditySpecValue findSVByID(int id);
+
 }

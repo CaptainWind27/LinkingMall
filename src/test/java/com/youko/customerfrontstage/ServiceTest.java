@@ -1,6 +1,9 @@
 package com.youko.customerfrontstage;
 
+import com.youko.customerfrontstage.bean.CartItem;
+import com.youko.customerfrontstage.mapper.CartMapper;
 import com.youko.customerfrontstage.mapper.CategoryMapper;
+import com.youko.customerfrontstage.service.CartService;
 import com.youko.customerfrontstage.service.CategoryService;
 import org.apache.ibatis.annotations.Mapper;
 import org.junit.jupiter.api.Test;
@@ -10,9 +13,10 @@ import org.springframework.boot.test.context.SpringBootTest;
 @SpringBootTest
 public class ServiceTest {
     @Autowired
-    CategoryService categoryService;
+    CartService cartService;
+
     @Test
     public void test(){
-        System.out.println(categoryService.getAll().toString());
+        cartService.insertItem(1,1,1);
     }
 }

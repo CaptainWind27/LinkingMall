@@ -45,4 +45,12 @@
     <select id="findAllSpu" resultType="com.youko.customerfrontstage.bean.CommoditySpu">
         select * from commodity_spu
     </select>
+
+    <select id="findOneSku" resultType="com.youko.customerfrontstage.bean.CommoditySku">
+        select * from commodity_sku where id = #{id}
+    </select>
+
+    <select id="findSVByID" resultType="com.youko.customerfrontstage.bean.CommoditySpecValue">
+        select * from commodity_spec_value where id = #{id}
+    </select>
 </mapper>
