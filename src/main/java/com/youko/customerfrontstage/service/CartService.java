@@ -49,21 +49,13 @@ public class CartService {
     }
 
     public List<CartItemDto> getCartSpu(int customerID){
-        List<CartSpu> cartSpus = new ArrayList<>();
         List<CartItem> cartItems = cartMapper.findByCustomerID(customerID);
-        for (CartItem cartItem : cartItems) {
-            CommoditySpu oneSpu = skuMapper.findOneSpu(skuMapper.findOneSku(cartItem.getSkuID()).getSpuID());
-            CartSpu cartSpu = new CartSpu();
-            cartSpu.setCartItem(cartItem);
-            cartSpu.setCommoditySpu(oneSpu);
-            cartSpus.add(cartSpu);
-        }
         List<CartItemDto> cartItemDtos = new ArrayList<>();
         for (CartItem cartItem : cartItems) {
             CartItemDto cartItemDto = new CartItemDto();
             cartItemDto.setCartID(cartItem.getId());
             cartItemDto.setCommoditySku(skuMapper.findOneSku(cartItem.getSkuID()));
-            cartItem.setNum(cartItem.getNum());
+            cartItemDto.setNum(cartItem.getNum());
             String picPath= pictureMapper.getMainPagePic(skuMapper.findOneSku(cartItem.getSkuID()).getSpuID()).getPicPath();
             List<CommoditySkuSpecValue> ssv = skuMapper.findSSV(cartItem.getSkuID());
             List<CommoditySpecValue> sv = new ArrayList<>();
@@ -77,6 +69,5 @@ public class CartService {
         return cartItemDtos;
 
     }
-
 
 }

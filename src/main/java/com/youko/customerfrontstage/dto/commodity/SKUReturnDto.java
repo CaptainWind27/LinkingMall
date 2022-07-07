@@ -8,6 +8,7 @@ import java.io.Serializable;
 import java.util.List;
 @Data
 public class SKUReturnDto implements Serializable {
+    private static final long serialVersionUID = 8779206777017011284L;
     CommoditySku sku;
     List<CommoditySkuSpecValue> ssv;
 }

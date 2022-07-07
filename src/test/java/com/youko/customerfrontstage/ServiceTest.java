@@ -12,11 +12,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 @SpringBootTest
 public class ServiceTest {
-    @Autowired
-    CartService cartService;
+
 
     @Test
     public void test(){
-        cartService.insertItem(1,1,1);
+//        cartService.insertItem(1,1,1);
     }
 }

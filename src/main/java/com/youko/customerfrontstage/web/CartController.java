@@ -5,6 +5,7 @@ import com.youko.customerfrontstage.service.CartService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -34,5 +35,13 @@ public class CartController {
         return cartService.getCartSpu(customerID);
     }
 
+    @GetMapping("/user/cart/updateNum")
+    public String updateNum(@Param("cartID") int cartID,@Param("num") int num){
+        int i = cartService.updateNum(cartID,num);
+        if (i==-1)
+            return "操作失败";
+        else
+            return "操作成功";
+    }
 
 }

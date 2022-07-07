@@ -12,6 +12,7 @@ import java.io.Serializable;
  */
 @Data
 public class CartSpu implements Serializable {
+    private static final long serialVersionUID = 6702537306499146020L;
     CartItem cartItem;
     CommoditySpu commoditySpu;
 }

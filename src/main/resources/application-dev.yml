@@ -8,8 +8,11 @@ spring:
     username: root
     password: 20020118
     driver-class-name: com.mysql.cj.jdbc.Driver
-  main:
-    allow-circular-references: true
+    hikari:
+      max-lifetime: 60000
+
+
+
     #配置单次上传文件大小
   servlet:
     multipart:
@@ -26,6 +29,8 @@ spring:
   web:
     resources:
       static-locations: file:D:\IdeaProject\customerFrontStage\src\main\resources\static
+  main:
+    allow-circular-references: true
 
 
 prop:
@@ -44,8 +49,8 @@ mybatis:
 
 #图片保存路径
 SavePath:
-  ProfilePhoto: 'C:\Users\86155\Pictures\pic'  #图片存储路径
-  ProfilePhotoMapper: '/profilePhoto/'  #图片的映射路径
+  ProfilePhoto: D:/pic/ #/www/wwwroot/images  #图片存储路径
+  ProfilePhotoMapper: /profilePhoto/  #图片的映射路径
 
 
 #分页查询工具

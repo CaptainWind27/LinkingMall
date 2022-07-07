@@ -29,9 +29,6 @@ import java.util.Map;
 @SpringBootTest
 class CustomerFrontStageApplicationTests {
 
-    @Autowired
-    PictureService pictureService;
-
     @Test
     void contextLoads() throws IOException, ParseException {
 //        PageInfo pageInfo=new PageInfo();

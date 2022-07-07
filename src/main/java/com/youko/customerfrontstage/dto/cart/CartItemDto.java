@@ -16,7 +16,8 @@ import java.util.List;
  */
 @Data
 public class CartItemDto implements Serializable {
-//    id: 10,
+    private static final long serialVersionUID = -4346441683695921303L;
+    //    id: 10,
 //    image: 'atic/默认商品.png',
 //    attr_val: '规格',
 //    stock: 15,

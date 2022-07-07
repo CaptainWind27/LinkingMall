@@ -12,6 +12,7 @@ import java.io.Serializable;
  */
 @Data
 public class CartItem implements Serializable {
+    private static final long serialVersionUID = -5612550075828973941L;
     //购物车项的id
     int id;
     //sku的id
