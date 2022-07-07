@@ -1,5 +1,6 @@
 package com.youko.customerfrontstage.bean;
 
+import com.youko.customerfrontstage.dto.commodity.MainPageSpuDto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -29,7 +30,7 @@ public class PageQuery<T> {
     /**
      * 返回结果集
      */
-    private List<T> results;
+    private List<MainPageSpuDto> results;
     /**
      * 不在T类中的参数
      */
