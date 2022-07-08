@@ -5,6 +5,8 @@ import com.youko.customerfrontstage.bean.PageInfo;
 import com.youko.customerfrontstage.bean.PageQuery;
 import com.youko.customerfrontstage.bean.Sort;
 import com.youko.customerfrontstage.dao.ILuceneDao;
+import com.youko.customerfrontstage.dto.commodity.MainPageSpuDto;
+import com.youko.customerfrontstage.service.PictureService;
 import org.apache.lucene.analysis.Analyzer;
 import org.apache.lucene.document.*;
 import org.apache.lucene.index.IndexWriter;
@@ -37,6 +39,9 @@ public class LuceneDaoImpl implements ILuceneDao {
 
     @Autowired
     private SearcherManager searcherManager;
+
+    @Autowired
+    private PictureService pictureService;
 
     @Override
     public void createCommoditySpuIndex(List<CommoditySpu> commoditySpuList)throws IOException{
@@ -104,7 +109,7 @@ public class LuceneDaoImpl implements ILuceneDao {
 
         pageInfo.setTotal(topDocs.totalHits);
         ScoreDoc[] hits = topDocs.scoreDocs;
-        List<CommoditySpu> pList = new ArrayList<CommoditySpu>();
+        List<MainPageSpuDto> pList = new ArrayList<MainPageSpuDto>();
         for (int i = 0; i < hits.length; i++) {
             Document doc = indexSearcher.doc(hits[i].doc);
             System.out.println(doc.toString());
@@ -115,7 +120,10 @@ public class LuceneDaoImpl implements ILuceneDao {
             commoditySpu.setLowPrice(Float.parseFloat(doc.get("lowPrice")));
             commoditySpu.setCategoryID(Integer.parseInt(doc.get("categoryID")));
             commoditySpu.setBrandID(Integer.parseInt(doc.get("brandID")));
-            pList.add(commoditySpu);
+            MainPageSpuDto mainPageSpuDto=new MainPageSpuDto();
+            mainPageSpuDto.setSpu(commoditySpu);
+            mainPageSpuDto.setPicPath(pictureService.getMainPagePic(commoditySpu.getId()).getPicPath());
+            pList.add(mainPageSpuDto);
         }
         pageQuery.setResults(pList);
         return pageQuery;

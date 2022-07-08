@@ -49,7 +49,7 @@ mybatis:
 
 #图片保存路径
 SavePath:
-  ProfilePhoto: D:/pic/ #/www/wwwroot/images  #图片存储路径
+  ProfilePhoto: /www/wwwroot/images  #图片存储路径
   ProfilePhotoMapper: /profilePhoto/  #图片的映射路径
 
 
