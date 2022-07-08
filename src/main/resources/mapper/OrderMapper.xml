@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.youko.customerfrontstage.mapper.OrderMapper">
+    <resultMap id="orderMap" type="com.youko.customerfrontstage.bean.Order">
+    <result column="id" jdbcType="INTEGER" property="id" />
+    <result column="customer_id" jdbcType="INTEGER" property="customerID" />
+    <result column="total_price" jdbcType="FLOAT" property="totalPrice" />
+    <result column="address" jdbcType="VARCHAR" property="Address" />
+    <result column="pay_time" jdbcType="TIMESTAMP" property="payTime" />
+    </resultMap>
+    
+
+    <insert id="insertOrder" useGeneratedKeys="true" keyProperty="id">
+        insert into commodity_order(id,customer_id,total_price,address,pay_time)
+        values (#{id},#{customerID},#{totalPrice},#{address},#{createTime})
+    </insert>
+    <select id="getCustomerOrder" resultType="com.youko.customerfrontstage.bean.Order">
+        select * from commodity_order where customer_id = #{customerID}
+    </select>
+    <update id="updatePrice">
+        update commodity_order set total_price = #{price} where id = #{orderID}
+    </update>
+</mapper>

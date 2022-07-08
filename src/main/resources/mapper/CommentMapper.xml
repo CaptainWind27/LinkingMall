@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.youko.customerfrontstage.mapper.CommentMapper">
+    <select id="findSpuComment" resultType="com.youko.customerfrontstage.bean.Comment">
+        select * from commodity_comment where spu_id = #{spuID}
+    </select>
+</mapper>

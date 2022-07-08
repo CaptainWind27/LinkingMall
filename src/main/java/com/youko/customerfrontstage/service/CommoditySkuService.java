@@ -5,6 +5,7 @@ import com.youko.customerfrontstage.dto.commodity.CommodityReturnDto;
 import com.youko.customerfrontstage.dto.commodity.SKUReturnDto;
 import com.youko.customerfrontstage.dto.commodity.SpecOfSpu;
 import com.youko.customerfrontstage.dto.commodity.SpecValueDto;
+import com.youko.customerfrontstage.mapper.PictureMapper;
 import com.youko.customerfrontstage.mapper.SkuMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,6 +17,8 @@ import java.util.List;
 public class CommoditySkuService {
     @Autowired
     SkuMapper skuMapper;
+    @Autowired
+    PictureMapper pictureMapper;
 
     /**
      *
@@ -25,21 +28,23 @@ public class CommoditySkuService {
     public CommodityReturnDto selectSpu(int id) {
         CommodityReturnDto commodityReturnDto = new CommodityReturnDto();
         CommoditySpu spu = skuMapper.findOneSpu(id);
-        List<CommoditySpuSpec> ss = skuMapper.findSS(id);
-        List<CommoditySpec> cs = new ArrayList<>();
-        for (CommoditySpuSpec s : ss) {
-            cs.add(skuMapper.findSpec(s.getSpecID()));
-        }
-        List<List<CommoditySpecValue>> sv = new ArrayList<>();
-        for (CommoditySpec c : cs) {
-            int i = c.getId();
-            List<CommoditySpecValue> sv1 = skuMapper.findSV(i);
-            sv.add(sv1);
-        }
         commodityReturnDto.setSpu(spu);
-        commodityReturnDto.setSs(ss);
-        commodityReturnDto.setCs(cs);
-        commodityReturnDto.setSv(sv);
+        List<CommoditySku> skus = skuMapper.findSku(spu.getId());
+        int stock = 0;
+        int sale = 0;
+        for (CommoditySku commoditySku : skus) {
+            sale+=commoditySku.getSale();
+            stock+=commoditySku.getStock();
+        }
+        commodityReturnDto.setSale(sale);
+        commodityReturnDto.setStock(stock);
+        List<String> picPath = new ArrayList<>();
+        List<PicturePath> picturePaths= pictureMapper.getPic(spu.getId());
+        for (PicturePath picturePath : picturePaths) {
+            String picP =picturePath.getPicPath();
+            picPath.add(picP);
+        }
+        commodityReturnDto.setPicPath(picPath);
         return commodityReturnDto;
     }
 

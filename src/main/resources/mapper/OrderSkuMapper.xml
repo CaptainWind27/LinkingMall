@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.youko.customerfrontstage.mapper.OrderSkuMapper">
+    <insert id="insertOrderSku" useGeneratedKeys="true" keyProperty="id">
+        insert into order_sku(id,order_id,sku_id,num)values(#{id},#{orderID},#{skuID},#{num})
+    </insert>
+    <select id="getOrderSku" resultType="com.youko.customerfrontstage.bean.OrderSku">
+        select * from order_sku where order_id = #{orderID}
+    </select>
+</mapper>
